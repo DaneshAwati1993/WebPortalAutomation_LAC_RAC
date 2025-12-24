@@ -38,8 +38,8 @@ public class BIBI_5004_Testing extends BaseTest {
 	public void SCActivityCode() throws InterruptedException {
 		
 		SCHierarchy sch = new SCHierarchy(driver);
-	    sch.switchToSCFrame();
-		//sch.clickSC();
+	    //sch.switchToSCFrame();
+		sch.clickSC();
 		sch.EnterSCCode();
 		sch.SelectSCCode();
 		sch.clickEditBtn();

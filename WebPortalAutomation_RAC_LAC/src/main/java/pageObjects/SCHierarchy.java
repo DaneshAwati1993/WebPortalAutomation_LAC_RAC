@@ -70,11 +70,10 @@ public class SCHierarchy extends BasePage {
     }
     
     public void EnterSCCode() throws InterruptedException {
-    	switchToSCFrame();
+    	//switchToSCFrame();
     	
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 
-    	wait.until(ExpectedConditions.elementToBeClickable(SCSearch)).click();
         SCSearch.sendKeys("901976");
 
     }
