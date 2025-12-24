@@ -46,10 +46,10 @@ public class SCHierarchy extends BasePage {
     @FindBy(xpath = "//button[@onclick='javascript: fnClose();']")
     WebElement cancelBtn;
 
-    @FindBy(id="//table//tbody/tr[1]/td[1]//input")
+    @FindBy(xpath="(//input[@type='text'])[1]")
     WebElement SCSearch;
     
-    @FindBy(id="//td[@title='901976']")
+    @FindBy(xpath="//td[@title='901976']")
     WebElement SCSelect;
     
     @FindBy(id = "Flex_8")
@@ -77,13 +77,15 @@ public class SCHierarchy extends BasePage {
         SCSearch.sendKeys("901976");
 
     }
-    public void SelectSCCode() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    public void SelectSCCode() throws InterruptedException {
+    	Thread.sleep(5000);
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 
         wait.until(ExpectedConditions.elementToBeClickable(SCSelect)).click();
     }
 
     public void clickSupervisor() {
+    	switchToSCFrame();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // wait for loader INSIDE iframe
@@ -95,6 +97,7 @@ public class SCHierarchy extends BasePage {
     }
 
     public void clickSeller() {
+    	switchToSCFrame();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // wait for loader INSIDE iframe

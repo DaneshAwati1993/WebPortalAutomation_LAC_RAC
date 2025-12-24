@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import base.BaseTest;
 import pageObjects.LoginPage;
-import utilities.WaitUtils;
+import utils.WaitUtils;
 public class LoginTest extends BaseTest {
 
     @Test

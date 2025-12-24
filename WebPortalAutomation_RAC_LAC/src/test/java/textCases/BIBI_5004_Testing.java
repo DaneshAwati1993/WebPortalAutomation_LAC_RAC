@@ -7,7 +7,8 @@ import base.BaseTest;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.SCHierarchy;
-import utilities.WaitUtils;
+import utils.AlertUtils;
+import utils.WaitUtils;
 
 public class BIBI_5004_Testing extends BaseTest {
 	
@@ -38,12 +39,17 @@ public class BIBI_5004_Testing extends BaseTest {
 	public void SCActivityCode() throws InterruptedException {
 		
 		SCHierarchy sch = new SCHierarchy(driver);
-	    //sch.switchToSCFrame();
 		sch.clickSC();
 		sch.EnterSCCode();
 		sch.SelectSCCode();
 		sch.clickEditBtn();
-
+		sch.setSCActivityCode("123456");
+		sch.clickSaveBtn();
+		if (AlertUtils.isAlertPresent(driver)) {
+		    String msg = AlertUtils.getAlertText(driver);
+		    System.out.println("Alert message: " + msg);
+		    AlertUtils.acceptAlert(driver);
+		}
 	}
 	
 	
