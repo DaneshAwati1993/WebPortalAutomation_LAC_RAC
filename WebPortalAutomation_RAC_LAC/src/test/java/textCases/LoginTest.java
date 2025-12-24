@@ -1,51 +1,20 @@
 package textCases;
 
-import java.time.Duration;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import base.BaseTest;
 import pageObjects.LoginPage;
+import utilities.WaitUtils;
+public class LoginTest extends BaseTest {
 
-public class LoginTest {
+    @Test
+    public void verifyLogin() {
 
-	public WebDriver driver;
-	
-	@BeforeClass
-	public void setup()
-	{
-		driver=new ChromeDriver();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
-		driver.get("https://bimbo-cr-qa.ivycpg.com/web/DMS");
-		driver.manage().window().maximize();
-	}
-	
-	@AfterClass
-	public void tearDown()
-	{
-		driver.quit();
-	}
-	
-	
-	@Test
-	public void VerifyLogin()
-	{
-		LoginPage LP=new LoginPage(driver);
-		LP.setusername("L1_user");
-		LP.setpassword("1");
-		LP.clickLoginbtn();
-		
-		String title=LP.Title();
-		
-		Assert.assertEquals(title, "IVYDMS");
-		
-		
-	}
+        LoginPage lp = new LoginPage(driver);
+        lp.login("L1_user","1");
 
+        WaitUtils.waitForTitle(driver, "IvyDMS");
+        Assert.assertEquals(driver.getTitle(), "IvyDMS",
+                "Login failed – Title mismatch");
+    }
 }

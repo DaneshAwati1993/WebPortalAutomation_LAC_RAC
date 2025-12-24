@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [BIBI-5003]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="ActivityCode(failed)">
+    <classes>
+      <class name="textCases.HomePageTest">
+        <methods>
+          <include name="verifyHomePage"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- textCases.HomePageTest -->
+      <class name="textCases.LoginTest">
+        <methods>
+          <include name="verifyLogin"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- textCases.LoginTest -->
+    </classes>
+  </test> <!-- ActivityCode(failed) -->
+</suite> <!-- Failed suite [BIBI-5003] -->
