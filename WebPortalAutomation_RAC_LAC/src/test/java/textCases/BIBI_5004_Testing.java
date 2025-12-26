@@ -43,15 +43,18 @@ public class BIBI_5004_Testing extends BaseTest {
 		sch.EnterSCCode();
 		sch.SelectSCCode();
 		sch.clickEditBtn();
-		sch.setSCActivityCode("123456");
+		sch.setSCActivityCode("AS$123");
 		sch.clickSaveBtn();
 		if (AlertUtils.isAlertPresent(driver)) {
 		    String msg = AlertUtils.getAlertText(driver);
 		    System.out.println("Alert message: " + msg);
 		    AlertUtils.acceptAlert(driver);
+		    
+		}
+		else{
+			String msg = sch.ErrorActivityCode();
+		    System.out.println("Validation error message is : " + msg);
+			
 		}
 	}
-	
-	
-
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,7 +19,7 @@ public class SCHierarchy extends BasePage {
     
 
     @FindBy(xpath = "//iframe[@id='iContent']") 
-    WebElement SCFrame;
+    WebElement IFrame;
     
     @FindBy(xpath = "//a[@value='DIS']")
     WebElement sc;
@@ -55,37 +54,44 @@ public class SCHierarchy extends BasePage {
     @FindBy(id = "Flex_8")
     WebElement scActivityCode;
     
+    @FindBy(id = "Flex_8-error")
+    WebElement ActivityCodeError;
+    
     // ---------- Actions ----------
 
     public void clickSC() {
-    	switchToSCFrame();
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-        // wait for loader INSIDE iframe
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                By.cssSelector(".loader-section")
-        ));
-
-        wait.until(ExpectedConditions.elementToBeClickable(sc)).click();
-    }
+		switchToIFrame();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	
+	    // wait for loader INSIDE iframe
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	            By.cssSelector(".loader-section")
+	    ));
+	
+	    wait.until(ExpectedConditions.elementToBeClickable(sc)).click();
+	}
     
     public void EnterSCCode() throws InterruptedException {
-    	//switchToSCFrame();
-    	
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-
-        SCSearch.sendKeys("901976");
-
-    }
-    public void SelectSCCode() throws InterruptedException {
-    	Thread.sleep(5000);
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-
-        wait.until(ExpectedConditions.elementToBeClickable(SCSelect)).click();
-    }
+		//switchToIFrame();
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	
+	    SCSearch.sendKeys("901976");
+	
+	}
+    public void SelectSCCode() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	
+		// wait for loader INSIDE iframe
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	            By.cssSelector(".loader-section")
+	    ));
+	
+	    wait.until(ExpectedConditions.elementToBeClickable(SCSelect)).click();
+		
+	}
 
     public void clickSupervisor() {
-    	switchToSCFrame();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // wait for loader INSIDE iframe
@@ -97,7 +103,6 @@ public class SCHierarchy extends BasePage {
     }
 
     public void clickSeller() {
-    	switchToSCFrame();
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // wait for loader INSIDE iframe
@@ -121,8 +126,13 @@ public class SCHierarchy extends BasePage {
     }
 
     public void clickSaveBtn() {
-        saveBtn.click();
-    }
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+    	By loader = By.cssSelector("div.loader-section.section-right");
+
+    	wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
+    	saveBtn.click();
+	}
 
     public void clickCancelBtn() {
         cancelBtn.click();
@@ -133,5 +143,8 @@ public class SCHierarchy extends BasePage {
         scActivityCode.sendKeys(code);
     }
 
-    
+	public String ErrorActivityCode() {
+		return ActivityCodeError.getText();
+	}
+
 }

@@ -18,7 +18,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void switchToSCFrame() {
+    public void switchToIFrame() {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
                 By.id("iContent")));
     }

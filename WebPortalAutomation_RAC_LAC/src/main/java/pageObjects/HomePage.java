@@ -23,6 +23,12 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@title='Sales Center Hierarchy']")
     WebElement scHierarchy;
     
+    @FindBy(xpath = "//a[@title='Route Management']")
+    WebElement Route_Management;
+    
+    @FindBy(xpath = "//a[@title='Route Master']")
+    WebElement RTMaster;
+    
     
     public void clickMasterMenu() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -37,7 +43,7 @@ public class HomePage extends BasePage {
     	// click
         masterMenu.click();
     }
-
+    
     public void clickSCHierarchy() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -50,8 +56,36 @@ public class HomePage extends BasePage {
 
     	// click
         scHierarchy.click();
+    
+    }
+
+    public void ClickRouteManagement() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    	// scroll to element
+    	((JavascriptExecutor) driver)
+    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", Route_Management);
+    	
+    	// wait until element is clickable
+    	wait.until(ExpectedConditions.elementToBeClickable(Route_Management));
+
+    	// click
+    	Route_Management.click();
         
     }
     
-    
+    public void ClickRTMaster() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    	// scroll to element
+    	((JavascriptExecutor) driver)
+    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", RTMaster);
+    	
+    	// wait until element is clickable
+    	wait.until(ExpectedConditions.elementToBeClickable(RTMaster));
+
+    	// click
+    	RTMaster.click();
+        
+    }
 }

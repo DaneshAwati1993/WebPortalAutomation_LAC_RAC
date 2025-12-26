@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="textCases.BIBI_5004_Testing">
+      <class name="textCases.Elsalvador.BIBI_5014">
         <methods>
           <include name="setup"/>
-          <include name="verifyActivityField"/>
-          <include name="SCActivityCode"/>
+          <include name="VerifyRtMasterMenu"/>
+          <include name="VerifyTheRTFiscalCode"/>
           <include name="verifyLogin"/>
         </methods>
-      </class> <!-- textCases.BIBI_5004_Testing -->
+      </class> <!-- textCases.Elsalvador.BIBI_5014 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
