@@ -47,6 +47,21 @@ public class RouteMaster extends BasePage {
 	
 	@FindBy (xpath="//tr[td[normalize-space()='9761']]") WebElement RTSelect;
 	
+	
+	//--Route Master Creation Objects------
+	@FindBy (xpath="//input[@id='AR_Code']") WebElement RTCode;
+	@FindBy (xpath="//input[@id='AR_Name']") WebElement RTName1;
+	@FindBy (xpath="//input[@id='AR_Alias_Name']") WebElement RTName2;
+	@FindBy (xpath="(//input[@class='select-dropdown valid'])[1]") WebElement RTCostCenter;
+	@FindBy (xpath="(//input[@value='--Select--'])[2]") WebElement RTType;
+	@FindBy (xpath="(//input[@value='--Select--'])[3]") WebElement RTSellType;
+	@FindBy (xpath="(//input[@value='--Select--'])[4]") WebElement RTSupervisor;
+	@FindBy (xpath="//input[@id='Fiscal_Route_Sequence']") WebElement RTFiscalseq;
+	@FindBy (xpath="//span[normalize-space()='Danesh_CC']") WebElement CCdata;
+	@FindBy (xpath="//span[normalize-space()='901976_van']") WebElement RTTypedata;
+	@FindBy (xpath="//span[normalize-space()='Van Seller']") WebElement SellerTypeData;
+	@FindBy (xpath="//span[normalize-space()='9761_FN']") WebElement SUPdata;
+	
 	public void SelectNSM()
 	{
 		NSMdd.click();
@@ -175,6 +190,23 @@ public class RouteMaster extends BasePage {
 		        Thread.currentThread().interrupt();
 		    }
 		}
+		
+//		public void CreateRoute(String Value)
+//		{
+//			RTCode.sendKeys("9774");
+//			RTName1.sendKeys("9773_AT_Route");
+//			RTName2.sendKeys("9773_AT_Route");
+//			RTCostCenter.click();
+//			CCdata.click();
+//			RTType.click();
+//			RTTypedata.click();
+//			RTSellType.click();
+//			SellerTypeData.click();
+//			RTSupervisor.click();
+//			SUPdata.click();
+//			RTFiscalseq.sendKeys(Value); 
+//			
+//		}
 
 
 }

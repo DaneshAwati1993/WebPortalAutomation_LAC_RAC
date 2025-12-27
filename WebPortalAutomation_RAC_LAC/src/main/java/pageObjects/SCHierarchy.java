@@ -71,9 +71,21 @@ public class SCHierarchy extends BasePage {
 	    wait.until(ExpectedConditions.invisibilityOfElementLocated(
 	            By.cssSelector(".loader-section")
 	    ));
+	    
+	 	// scrolling Actions
+	    js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	    waitForPageToStabilize();
+	    js.executeScript("window.scrollTo(0, 0)");
 	
 	    wait.until(ExpectedConditions.elementToBeClickable(SCSelect)).click();
 		
+	}
+    private void waitForPageToStabilize() {
+	    try {
+	        Thread.sleep(500); // small pause for lazy load
+	    } catch (InterruptedException e) {
+	        Thread.currentThread().interrupt();
+	    }
 	}
 
     public void clickSupervisor() {
