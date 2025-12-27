@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-26T23:38:41 IST" name="Default suite" finished-at="2025-12-26T23:39:02 IST" duration-ms="20433">
+  <suite started-at="2025-12-27T23:20:45 IST" name="Default suite" finished-at="2025-12-27T23:20:58 IST" duration-ms="12864">
     <groups>
     </groups>
-    <test started-at="2025-12-26T23:38:41 IST" name="Default test" finished-at="2025-12-26T23:39:02 IST" duration-ms="20433">
+    <test started-at="2025-12-27T23:20:45 IST" name="Default test" finished-at="2025-12-27T23:20:58 IST" duration-ms="12864">
       <class name="textCases.Elsalvador.BIBI_5014">
-        <test-method is-config="true" signature="setup()[pri:0, instance:textCases.Elsalvador.BIBI_5014@11c9af63]" started-at="2025-12-26T23:38:36 IST" name="setup" finished-at="2025-12-26T23:38:41 IST" duration-ms="5325" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:textCases.Elsalvador.BIBI_5014@757acd7b]" started-at="2025-12-27T23:20:40 IST" name="setup" finished-at="2025-12-27T23:20:45 IST" duration-ms="4604" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLogin()[pri:1, instance:textCases.Elsalvador.BIBI_5014@11c9af63]" started-at="2025-12-26T23:38:41 IST" name="verifyLogin" finished-at="2025-12-26T23:38:43 IST" duration-ms="1702" status="PASS">
+        <test-method signature="verifyLogin()[pri:1, instance:textCases.Elsalvador.BIBI_5014@757acd7b]" started-at="2025-12-27T23:20:45 IST" name="verifyLogin" finished-at="2025-12-27T23:20:47 IST" duration-ms="1690" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLogin -->
-        <test-method signature="VerifyRtMasterMenu()[pri:2, instance:textCases.Elsalvador.BIBI_5014@11c9af63]" started-at="2025-12-26T23:38:43 IST" name="VerifyRtMasterMenu" finished-at="2025-12-26T23:38:47 IST" depends-on-methods="textCases.Elsalvador.BIBI_5014.verifyLogin" duration-ms="3382" status="PASS">
+        <test-method signature="VerifyRtMasterMenu()[pri:2, instance:textCases.Elsalvador.BIBI_5014@757acd7b]" started-at="2025-12-27T23:20:47 IST" name="VerifyRtMasterMenu" finished-at="2025-12-27T23:20:48 IST" depends-on-methods="textCases.Elsalvador.BIBI_5014.verifyLogin" duration-ms="889" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyRtMasterMenu -->
-        <test-method signature="VerifyTheRTFiscalCode()[pri:2, instance:textCases.Elsalvador.BIBI_5014@11c9af63]" started-at="2025-12-26T23:38:47 IST" name="VerifyTheRTFiscalCode" finished-at="2025-12-26T23:39:02 IST" depends-on-methods="textCases.Elsalvador.BIBI_5014.VerifyRtMasterMenu" duration-ms="15249" status="PASS">
+        <test-method signature="VerifyTheRTFiscalCode()[pri:2, instance:textCases.Elsalvador.BIBI_5014@757acd7b]" started-at="2025-12-27T23:20:48 IST" name="VerifyTheRTFiscalCode" finished-at="2025-12-27T23:20:58 IST" depends-on-methods="textCases.Elsalvador.BIBI_5014.VerifyRtMasterMenu" duration-ms="10180" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyTheRTFiscalCode -->

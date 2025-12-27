@@ -30,21 +30,6 @@ public class SCHierarchy extends BasePage {
     @FindBy(xpath = "//a[@value='DummySeller']")
     WebElement seller;
 
-    @FindBy(xpath = "//a[normalize-space()='Add']")
-    WebElement addBtn;
-
-    @FindBy(xpath = "//a[normalize-space()='Edit']")
-    WebElement editBtn;
-
-    @FindBy(xpath = "//a[normalize-space()='Delete']")
-    WebElement deleteBtn;
-
-    @FindBy(xpath = "//button[@onclick='javascript: fnSave();']")
-    WebElement saveBtn;
-
-    @FindBy(xpath = "//button[@onclick='javascript: fnClose();']")
-    WebElement cancelBtn;
-
     @FindBy(xpath="(//input[@type='text'])[1]")
     WebElement SCSearch;
     
@@ -111,31 +96,6 @@ public class SCHierarchy extends BasePage {
         ));
 
         wait.until(ExpectedConditions.elementToBeClickable(seller)).click();
-    }
-
-    public void clickAddBtn() {
-        addBtn.click();
-    }
-
-    public void clickEditBtn() {
-        editBtn.click();
-    }
-
-    public void clickDeleteBtn() {
-        deleteBtn.click();
-    }
-
-    public void clickSaveBtn() {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-    	By loader = By.cssSelector("div.loader-section.section-right");
-
-    	wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
-    	saveBtn.click();
-	}
-
-    public void clickCancelBtn() {
-        cancelBtn.click();
     }
 
     public void setSCActivityCode(String code) {

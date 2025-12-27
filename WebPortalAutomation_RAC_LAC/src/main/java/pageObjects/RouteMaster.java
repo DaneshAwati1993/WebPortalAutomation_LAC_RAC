@@ -3,7 +3,6 @@ package pageObjects;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,8 +10,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import base.BasePage;
+import utils.DhxGridUtil;
 
 public class RouteMaster extends BasePage {
+	
+	   // loader used in your application
+    By loader = By.cssSelector("div.loader-section");
 
 	public RouteMaster(WebDriver driver) {
 		super(driver);
@@ -42,20 +45,19 @@ public class RouteMaster extends BasePage {
 	
 	@FindBy (xpath="//span[normalize-space()='901976']") WebElement SCdata;
 	
-	@FindBy (xpath="//td[@title='9761']") WebElement RTSelect;
+	@FindBy (xpath="//tr[td[normalize-space()='9761']]") WebElement RTSelect;
 	
 	public void SelectNSM()
 	{
 		NSMdd.click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	// scroll to element
-    	((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", NSMdata);
+    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", NSMdata);
     	// wait until element is clickable
     	wait.until(ExpectedConditions.elementToBeClickable(NSMdata));
     	wait.until(ExpectedConditions.visibilityOfAllElements(NSMdata));
 		NSMdata.click();
-		System.out.println("Selected NSM is : "+NSMdata.getText());
+		System.out.println("Selected NSM is : "+NSMdd.getText());
 	}
 	
 	public void SelectSD()
@@ -68,13 +70,12 @@ public class RouteMaster extends BasePage {
 		SDdd.click();
 
     	// scroll to element
-    	((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", SDdata);
+    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", SDdata);
     	// wait until element is clickable
     	wait.until(ExpectedConditions.elementToBeClickable(SDdata));
     	wait.until(ExpectedConditions.visibilityOfAllElements(SDdata));
 		SDdata.click();
-		System.out.println("Selected SD is : "+SDdata.getText());
+		System.out.println("Selected SD is : "+SDdd.getText());
 	}
 	
 	public void SelectRSM()
@@ -87,13 +88,12 @@ public class RouteMaster extends BasePage {
 		RSMdd.click();
 
     	// scroll to element
-    	((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", RSMdata);
+    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", RSMdata);
     	// wait until element is clickable
     	wait.until(ExpectedConditions.elementToBeClickable(RSMdata));
     	wait.until(ExpectedConditions.visibilityOfAllElements(RSMdata));
     	RSMdata.click();
-		System.out.println("Selected RSM is : "+RSMdata.getText());
+		System.out.println("Selected RSM is : "+RSMdd.getText());
 	}
 	public void SelectSM()
 	{
@@ -105,13 +105,12 @@ public class RouteMaster extends BasePage {
 		SMdd.click();
 
     	// scroll to element
-    	((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", SMdata);
+    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", SMdata);
     	// wait until element is clickable
     	wait.until(ExpectedConditions.elementToBeClickable(SMdata));
     	wait.until(ExpectedConditions.visibilityOfAllElements(SMdata));
     	SMdata.click();
-		System.out.println("Selected SM is : "+SMdata.getText());
+		System.out.println("Selected SM is : "+SMdd.getText());
 		
 	}
 	public void SelectDM()
@@ -124,13 +123,12 @@ public class RouteMaster extends BasePage {
 		DMdd.click();
 
     	// scroll to element
-    	((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", DMdata);
+    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", DMdata);
     	// wait until element is clickable
     	wait.until(ExpectedConditions.elementToBeClickable(DMdata));
     	wait.until(ExpectedConditions.visibilityOfAllElements(DMdata));
     	DMdata.click();
-		System.out.println("Selected DM is : "+DMdata.getText());
+		System.out.println("Selected DM is : "+DMdd.getText());
 	}
 	public void SelectSC()
 	{
@@ -142,28 +140,41 @@ public class RouteMaster extends BasePage {
 		SCdd.click();
 
     	// scroll to element
-    	((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", SCdata);
+    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", SCdata);
     	// wait until element is clickable
     	wait.until(ExpectedConditions.elementToBeClickable(SCdata));
     	wait.until(ExpectedConditions.visibilityOfAllElements(SCdata));
     	SCdata.click();
-		System.out.println("Selected SC is : "+SCdata.getText());
+		System.out.println("Selected SC is : "+SCdd.getText());
 	}
 	
-	public void SelectRoute()
-	{
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//
-//
-//    	// scroll to element
-//    	((JavascriptExecutor) driver)
-//    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", RTSelect);
-//    	// wait until element is clickable
-//    	wait.until(ExpectedConditions.elementToBeClickable(RTSelect));
-//    	wait.until(ExpectedConditions.visibilityOfAllElements(RTSelect));
-    	RTSelect.click();
-	}
-	
+	DhxGridUtil gridUtil =
+		    new DhxGridUtil(driver, Duration.ofSeconds(30));
+
+		public void selectRoute() {
+			{
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+			    // wait for loader INSIDE iframe
+			    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+			            By.cssSelector(".loader-section")));
+
+		    	// scrolling Actions
+			    js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+			    waitForPageToStabilize();
+			    js.executeScript("window.scrollTo(0, 0)");
+		    	
+		    	RTSelect.click();
+			}
+		}
+		
+		private void waitForPageToStabilize() {
+		    try {
+		        Thread.sleep(500); // small pause for lazy load
+		    } catch (InterruptedException e) {
+		        Thread.currentThread().interrupt();
+		    }
+		}
+
 
 }

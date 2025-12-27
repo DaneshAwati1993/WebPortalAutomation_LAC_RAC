@@ -35,7 +35,7 @@ public class BIBI_5014 extends BaseTest {
 	}
 	
 	@Test(priority = 2, dependsOnMethods = "VerifyRtMasterMenu")
-	public void VerifyTheRTFiscalCode() {
+	public void VerifyTheRTFiscalCode() throws InterruptedException {
 
 		RouteMaster RT = new RouteMaster(driver);
 		RT.switchToIFrame();
@@ -45,7 +45,9 @@ public class BIBI_5014 extends BaseTest {
 	    RT.SelectSM();
 	    RT.SelectDM();
 	    RT.SelectSC();
-	    RT.SelectRoute();
+	    RT.selectRoute();
+	    Thread.sleep(300);
+	    RT.clickEditBtn();
 	    
 
 	}
