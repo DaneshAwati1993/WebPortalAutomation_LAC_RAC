@@ -235,6 +235,9 @@ public class FiscalReasonMaster extends BasePage {
     
     public boolean isSuccessMessageDisplayed() {
         try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='card-alert']/div/p/i[@class='fa fa-check']")));
+        	wait.until(ExpectedConditions.visibilityOfAllElements(SuccessMessage));
+            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[@id='card-alert']/button")));
             return SuccessMessage.isDisplayed();
         } catch (Exception e) {
             return false;
@@ -243,7 +246,12 @@ public class FiscalReasonMaster extends BasePage {
 
     public boolean isErrorMessageDisplayed() {
         try {
-            return CancelReason.isDisplayed();
+
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='card-alert']/div/p/i[@class='fa fa-check']")));
+        	wait.until(ExpectedConditions.visibilityOfAllElements(ErrorMessage));
+            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[@id='card-alert']/button")));
+            return ErrorMessage.isDisplayed();
+            
         } catch (Exception e) {
             return false;
         }

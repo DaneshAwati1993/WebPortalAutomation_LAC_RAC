@@ -68,7 +68,7 @@ public class Fiscal_Reason_Master extends BaseTest {
 		            System.out.println("❌ FAILED: " + reasonCode);
 		            FSM.clickCancelReason();
 
-		        }  else {
+		        }  else if (FSM.isSuccessMessageDisplayed()) {
 
 		            System.out.println("✅ SUCCESS: " + reasonCode);
 		        }
