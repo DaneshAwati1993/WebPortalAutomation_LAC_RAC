@@ -16,6 +16,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://bimbo-cr-qa.ivycpg.com/web/DMS");
+        
     }
     
 

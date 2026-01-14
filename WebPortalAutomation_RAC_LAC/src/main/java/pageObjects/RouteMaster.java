@@ -183,7 +183,7 @@ public class RouteMaster extends BasePage {
 			}
 		}
 		
-		private void waitForPageToStabilize() {
+		public void waitForPageToStabilize() {
 		    try {
 		        Thread.sleep(500); // small pause for lazy load
 		    } catch (InterruptedException e) {
@@ -191,22 +191,64 @@ public class RouteMaster extends BasePage {
 		    }
 		}
 		
-//		public void CreateRoute(String Value)
-//		{
-//			RTCode.sendKeys("9774");
-//			RTName1.sendKeys("9773_AT_Route");
-//			RTName2.sendKeys("9773_AT_Route");
-//			RTCostCenter.click();
-//			CCdata.click();
-//			RTType.click();
-//			RTTypedata.click();
-//			RTSellType.click();
-//			SellerTypeData.click();
-//			RTSupervisor.click();
-//			SUPdata.click();
-//			RTFiscalseq.sendKeys(Value); 
-//			
-//		}
-
+		public void EnterRTCode(String RTcode)
+		{
+			RTCode.sendKeys(RTcode);
+		}
+		
+		public void EnterRTName(String RTname)
+		{
+			RTName1.sendKeys(RTname);
+		}
+		public void EnterRTAliyasName(String RTname2)
+		{
+			RTName2.sendKeys(RTname2);
+		}
+		public void SelectCostCenter()
+		{
+			RTCostCenter.click();
+			// scroll to element
+	    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", CCdata);
+	    	// wait until element is clickable
+	    	wait.until(ExpectedConditions.elementToBeClickable(CCdata));
+	    	wait.until(ExpectedConditions.visibilityOfAllElements(CCdata));
+	    	CCdata.click();
+		}
+		public void SelectRtType()
+		{
+			RTType.click();
+			// scroll to element
+	    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", RTTypedata);
+	    	// wait until element is clickable
+	    	wait.until(ExpectedConditions.elementToBeClickable(RTTypedata));
+	    	wait.until(ExpectedConditions.visibilityOfAllElements(RTTypedata));
+	    	RTTypedata.click();
+		}
+		public void SelectRTSup()
+		{
+			RTSupervisor.click();
+			// scroll to element
+	    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", SUPdata);
+	    	// wait until element is clickable
+	    	wait.until(ExpectedConditions.elementToBeClickable(SUPdata));
+	    	wait.until(ExpectedConditions.visibilityOfAllElements(SUPdata));
+	    	SUPdata.click();
+		}
+		public void SelectRTSellType()
+		{
+			RTSellType.click();
+			// scroll to element
+	    	js.executeScript("arguments[0].scrollIntoView({block:'center'});", SellerTypeData);
+	    	// wait until element is clickable
+	    	wait.until(ExpectedConditions.elementToBeClickable(SellerTypeData));
+	    	wait.until(ExpectedConditions.visibilityOfAllElements(SellerTypeData));
+	    	SellerTypeData.click();
+		}
+		public void SelectRTFiscalseq(String RTFiscalSequence)
+		{
+			RTFiscalseq.clear();
+			RTFiscalseq.sendKeys(RTFiscalSequence);
+		}
+		
 
 }

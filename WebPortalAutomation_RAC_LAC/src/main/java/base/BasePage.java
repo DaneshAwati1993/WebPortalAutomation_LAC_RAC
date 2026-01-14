@@ -33,10 +33,10 @@ public class BasePage {
     @FindBy(xpath = "//a[normalize-space()='Delete']")
     WebElement deleteBtn;
 
-    @FindBy(xpath = "//button[@onclick='javascript: fnSave();']")
+    @FindBy(xpath = "//button[@id='btnDetailSave']")
     WebElement saveBtn;
 
-    @FindBy(xpath = "//button[@onclick='javascript: fnClose();']")
+    @FindBy(xpath = "//button[@id='btnDetailCancel']")
     WebElement cancelBtn;
     
     
@@ -76,5 +76,11 @@ public class BasePage {
 
     public void switchToMainPage() {
         driver.switchTo().defaultContent();
+    }
+    
+    public void waitForAddButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//button[text()='Add']")));
     }
 }

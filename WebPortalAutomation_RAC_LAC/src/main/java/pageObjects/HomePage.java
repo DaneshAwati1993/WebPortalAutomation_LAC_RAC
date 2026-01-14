@@ -29,6 +29,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@title='Route Master']")
     WebElement RTMaster;
     
+    @FindBy(xpath = "//a[@title='Fiscal Reason Master']")
+    WebElement FiscalReasonMaster;
     
     public void clickMasterMenu() {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -71,6 +73,21 @@ public class HomePage extends BasePage {
 
     	// click
     	Route_Management.click();
+        
+    }
+    
+    public void ClickFSMMaster() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    	// scroll to element
+    	((JavascriptExecutor) driver)
+    	        .executeScript("arguments[0].scrollIntoView({block:'center'});", FiscalReasonMaster);
+    	
+    	// wait until element is clickable
+    	wait.until(ExpectedConditions.elementToBeClickable(FiscalReasonMaster));
+
+    	// click
+    	FiscalReasonMaster.click();
         
     }
     
